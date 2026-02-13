@@ -10,7 +10,7 @@ rust-version = "1.93.0"
 
 [workspace.dependencies]
 thiserror = { path = ".", default-features = false }
-thiserror-impl = { path = "impl" }
+thiserror-impl = { path = "impl", version = "=2.0.18" }
 proc-macro2 = "1.0.106"
 quote = "1.0.44"
 syn = "2.0.115"
