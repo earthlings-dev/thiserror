@@ -34,7 +34,7 @@ mod valid;
 use proc_macro::TokenStream;
 use proc_macro2::{Ident, Span};
 use quote::{ToTokens, TokenStreamExt as _};
-use syn::{parse_macro_input, DeriveInput};
+use syn::{DeriveInput, parse_macro_input};
 
 #[proc_macro_derive(Error, attributes(backtrace, error, from, source))]
 pub fn derive_error(input: TokenStream) -> TokenStream {

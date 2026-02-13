@@ -3,9 +3,9 @@ use quote::ToTokens;
 use std::cmp::Ordering;
 use std::fmt::{self, Display};
 use std::hash::{Hash, Hasher};
+use syn::Index;
 use syn::ext::IdentExt as _;
 use syn::parse::{Parse, ParseStream, Result};
-use syn::Index;
 
 #[derive(Clone)]
 #[repr(transparent)]

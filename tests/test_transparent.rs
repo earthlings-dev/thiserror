@@ -21,7 +21,7 @@ fn test_transparent_struct() {
     assert_eq!("E0", error.to_string());
     assert!(error.source().is_none());
 
-    let io = io::Error::new(io::ErrorKind::Other, "oh no!");
+    let io = io::Error::other("oh no!");
     let error = Error(ErrorKind::from(io));
     assert_eq!("E1", error.to_string());
     error.source().unwrap().downcast_ref::<io::Error>().unwrap();

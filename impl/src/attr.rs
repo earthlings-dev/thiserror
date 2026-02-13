@@ -1,11 +1,11 @@
 use proc_macro2::{Delimiter, Group, Literal, Punct, Spacing, Span, TokenStream, TokenTree};
-use quote::{format_ident, quote, quote_spanned, ToTokens};
+use quote::{ToTokens, format_ident, quote, quote_spanned};
 use std::collections::BTreeSet as Set;
 use syn::parse::discouraged::Speculative;
 use syn::parse::{End, ParseStream};
 use syn::{
-    braced, bracketed, parenthesized, token, Attribute, Error, ExprPath, Ident, Index, LitFloat,
-    LitInt, LitStr, Meta, Result, Token,
+    Attribute, Error, ExprPath, Ident, Index, LitFloat, LitInt, LitStr, Meta, Result, Token,
+    braced, bracketed, parenthesized, token,
 };
 
 pub struct Attrs<'a> {

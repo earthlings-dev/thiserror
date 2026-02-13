@@ -190,13 +190,13 @@ fn check_field_attrs(fields: &[Field]) -> Result<()> {
         }
         has_backtrace |= field.is_backtrace();
     }
-    if let (Some(from_field), Some(source_field)) = (from_field, source_field) {
-        if from_field.member != source_field.member {
-            return Err(Error::new_spanned(
-                from_field.attrs.from.unwrap().original,
-                "#[from] is only supported on the source field, not any other field",
-            ));
-        }
+    if let (Some(from_field), Some(source_field)) = (from_field, source_field)
+        && from_field.member != source_field.member
+    {
+        return Err(Error::new_spanned(
+            from_field.attrs.from.unwrap().original,
+            "#[from] is only supported on the source field, not any other field",
+        ));
     }
     if let Some(from_field) = from_field {
         let max_expected_fields = match backtrace_field {
@@ -210,13 +210,13 @@ fn check_field_attrs(fields: &[Field]) -> Result<()> {
             ));
         }
     }
-    if let Some(source_field) = source_field.or(from_field) {
-        if contains_non_static_lifetime(source_field.ty) {
-            return Err(Error::new_spanned(
-                &source_field.original.ty,
-                "non-static lifetimes are not allowed in the source of an error, because std::error::Error requires the source is dyn Error + 'static",
-            ));
-        }
+    if let Some(source_field) = source_field.or(from_field)
+        && contains_non_static_lifetime(source_field.ty)
+    {
+        return Err(Error::new_spanned(
+            &source_field.original.ty,
+            "non-static lifetimes are not allowed in the source of an error, because std::error::Error requires the source is dyn Error + 'static",
+        ));
     }
     Ok(())
 }
@@ -232,7 +232,7 @@ fn contains_non_static_lifetime(ty: &Type) -> bool {
                 match arg {
                     GenericArgument::Type(ty) if contains_non_static_lifetime(ty) => return true,
                     GenericArgument::Lifetime(lifetime) if lifetime.ident != "static" => {
-                        return true
+                        return true;
                     }
                     _ => {}
                 }

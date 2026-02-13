@@ -1,15 +1,36 @@
+[workspace]
+members = ["impl", "tests/no-std"]
+
+[workspace.package]
+authors = ["David Tolnay <dtolnay@gmail.com>"]
+edition = "2024"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/dtolnay/thiserror"
+rust-version = "1.93.0"
+
+[workspace.dependencies]
+thiserror = { path = ".", default-features = false }
+thiserror-impl = { path = "impl" }
+proc-macro2 = "1.0.106"
+quote = "1.0.44"
+syn = "2.0.115"
+anyhow = { git = "https://github.com/earthlings-dev/anyhow.git" }
+ref-cast = "1.0.25"
+rustversion = "1.0.22"
+trybuild = { version = "1.0.116", features = ["diff"] }
+
 [package]
 name = "thiserror"
 version = "2.0.18"
-authors = ["David Tolnay <dtolnay@gmail.com>"]
+authors.workspace = true
 categories = ["rust-patterns", "no-std"]
 description = "derive(Error)"
 documentation = "https://docs.rs/thiserror"
-edition = "2021"
+edition.workspace = true
 keywords = ["error", "error-handling", "derive"]
-license = "MIT OR Apache-2.0"
-repository = "https://github.com/dtolnay/thiserror"
-rust-version = "1.71"
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
 
 [features]
 default = ["std"]
@@ -28,16 +49,13 @@ default = ["std"]
 std = []
 
 [dependencies]
-thiserror-impl = { version = "=2.0.18", path = "impl" }
+thiserror-impl = { workspace = true }
 
 [dev-dependencies]
-anyhow = "1.0.73"
-ref-cast = "1.0.18"
-rustversion = "1.0.13"
-trybuild = { version = "1.0.108", features = ["diff"] }
-
-[workspace]
-members = ["impl", "tests/no-std"]
+anyhow = { workspace = true }
+ref-cast = { workspace = true }
+rustversion = { workspace = true }
+trybuild = { workspace = true }
 
 [package.metadata.docs.rs]
 targets = ["x86_64-unknown-linux-gnu"]

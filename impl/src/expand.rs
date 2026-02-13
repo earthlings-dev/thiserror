@@ -5,7 +5,7 @@ use crate::generics::InferredBounds;
 use crate::private;
 use crate::unraw::MemberUnraw;
 use proc_macro2::{Ident, Span, TokenStream};
-use quote::{format_ident, quote, quote_spanned, ToTokens};
+use quote::{ToTokens, format_ident, quote, quote_spanned};
 use std::collections::BTreeSet as Set;
 use syn::{DeriveInput, GenericArgument, PathArguments, Result, Token, Type};
 
