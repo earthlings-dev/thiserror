@@ -6,10 +6,10 @@ authors = ["David Tolnay <dtolnay@gmail.com>"]
 edition = "2024"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/dtolnay/thiserror"
-rust-version = "1.93.0"
+rust-version = "1.93"
 
 [workspace.dependencies]
-thiserror = { path = ".", default-features = false }
+thiserror = { version = "2.0.18", path = ".", default-features = false }
 thiserror-impl = { path = "impl", version = "=2.0.18" }
 proc-macro2 = "1.0.106"
 quote = "1.0.44"
