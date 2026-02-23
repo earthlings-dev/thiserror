@@ -14,7 +14,7 @@ thiserror-impl = { path = "impl", version = "=2.0.18" }
 proc-macro2 = "1.0.106"
 quote = "1.0.44"
 syn = "2.0.115"
-anyhow = { git = "https://github.com/earthlings-dev/anyhow.git" }
+anyhow = "1"
 ref-cast = "1.0.25"
 rustversion = "1.0.22"
 trybuild = { version = "1.0.116", features = ["diff"] }
@@ -66,3 +66,6 @@ rustdoc-args = [
     "--extern-html-root-url=alloc=https://doc.rust-lang.org",
     "--extern-html-root-url=std=https://doc.rust-lang.org",
 ]
+
+[patch.crates-io]
+anyhow = { path = "../anyhow" }
